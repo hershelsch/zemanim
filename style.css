@@ -1,0 +1,61 @@
+button.prev {
+    position: absolute;
+    left: 10px;
+    top: 20px;
+    width: 50px;
+    height: 40px;
+}
+
+button.next {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    width: 50px;
+    height: 40px;
+}
+
+button {
+    border-radius: 20%;
+    cursor: pointer;
+}
+
+.zmanim-div {
+    margin: auto;
+    width: 400px;
+    display: flex;
+    height: auto;
+    position: relative;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+table {
+
+    font-size: 29px;
+    font-weight: 550;
+    margin: 20px auto 15px auto;
+
+}
+
+select {
+    font-size: 50px;
+    margin-top: 15px;
+    border: none;
+    cursor: pointer;
+}
+
+body {
+
+    text-align: center;
+
+    display: grid;
+}
+
+td:nth-child(1) {
+    text-align: left;
+}
+
+td:nth-child(2) {
+    text-align: right;
+}
