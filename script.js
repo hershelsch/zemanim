@@ -1,10 +1,11 @@
+const DateH2El = document.querySelector('h2#date')
 const HDate = {
     date: new Hebcal.HDate(),
     location:[],
     changeDate(date) {
         this.date = date
         this.date.setLocation(this.location)
-        document.querySelector('h2#date').innerText=this.date.toString('h')
+        DateH2El.innerText=this.date.toString('h')
 
     },
     setLocation(location) {
@@ -97,7 +98,14 @@ const nextDayBtn = document.querySelector('button.next')
 const prevDayBtn = document.querySelector('button.prev')
 nextDayBtn.addEventListener('click',()=>{HDate.goToNextDay()})
 prevDayBtn.addEventListener('click',()=>{HDate.goToPrevDay()})
-document.querySelector('h2#date').innerText=HDate.date.toString('h')
+DateH2El.innerText=HDate.date.toString('h')
 
 populateCitiesDD()
 populateZmanim(HDate.getZmanim())
+window.onkeydown = (e)=>{
+    if (e.keyCode === 39) {
+        HDate.goToNextDay()
+    }else if(e.keyCode === 37){
+HDate.goToPrevDay()
+    }
+}
