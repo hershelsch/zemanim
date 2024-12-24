@@ -59,3 +59,6 @@ td:nth-child(1) {
 td:nth-child(2) {
     text-align: right;
 }
+input#date-input{
+    position: absolute;
+}

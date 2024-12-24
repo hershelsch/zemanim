@@ -1,11 +1,14 @@
 const DateH2El = document.querySelector('h2#date')
+const DateInput = document.querySelector("#date-input")
 const HDate = {
     date: new Hebcal.HDate(),
     location:[],
+    
     changeDate(date) {
         this.date = date
         this.date.setLocation(this.location)
         DateH2El.innerText=this.date.toString('h')
+        populateZmanim(this.getZmanim())
 
     },
     setLocation(location) {
@@ -14,15 +17,13 @@ this.date.setLocation(location)
 
     },
     goToNextDay(){
-        let newDate = this.date.next()
-        this.changeDate(newDate)
-        populateZmanim(this.getZmanim())
+        const NewDate = this.date.next()
+        this.changeDate(NewDate)
 
     },
     goToPrevDay(){
-        let newDate = this.date.prev()
-        this.changeDate(newDate)
-        populateZmanim(this.getZmanim())
+        const NewDate = this.date.prev()
+        this.changeDate(NewDate)
     },
     changeLocation(newLocation) {
         this.setLocation(newLocation)
@@ -99,13 +100,18 @@ const prevDayBtn = document.querySelector('button.prev')
 nextDayBtn.addEventListener('click',()=>{HDate.goToNextDay()})
 prevDayBtn.addEventListener('click',()=>{HDate.goToPrevDay()})
 DateH2El.innerText=HDate.date.toString('h')
-
+DateInput.addEventListener('change',({target})=>{
+    if(target.value){
+        const NewDate = target.value.replace('-','/')
+        HDate.changeDate(new Hebcal.HDate(new Date(NewDate)))
+}
+})
 populateCitiesDD()
 populateZmanim(HDate.getZmanim())
 window.onkeydown = (e)=>{
-    if (e.keyCode === 39) {
+    if (e.keyCode === 39 && e.ctrlKey ===true) {
         HDate.goToNextDay()
-    }else if(e.keyCode === 37){
+    }else if(e.keyCode === 37 && e.ctrlKey ===true){
 HDate.goToPrevDay()
     }
 }
