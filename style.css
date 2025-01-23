@@ -17,11 +17,21 @@ button.next {
 button {
     border-radius: 20%;
     cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
 }
 
 .zmanim-div {
     margin: auto;
-    width: 400px;
+    width: 90%;
+    max-width: 400px;
     display: flex;
     height: auto;
     position: relative;
@@ -31,25 +41,38 @@ button {
 }
 
 table {
-
-    font-size: 29px;
+    font-size: 1.2em;
     font-weight: 550;
     margin: 20px auto 15px auto;
-
+    width: 100%;
+    border-collapse: collapse;
 }
 
-select {
-    font-size: 50px;
-    margin-top: 15px;
-    border: none;
-    cursor: pointer;
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: relative;
 }
 
-body {
-
-    text-align: center;
-
-    display: grid;
+td:hover::after {
+    content: attr(data-fulltext);
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    white-space: nowrap;
+    z-index: 10;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    pointer-events: none;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 td:nth-child(1) {
@@ -59,9 +82,56 @@ td:nth-child(1) {
 td:nth-child(2) {
     text-align: right;
 }
-input#date-input{
+
+table {
+    width: 100%; /* Allow the table to fill the container */
+    max-width: 600px; /* Set a maximum width */
+    border-collapse: collapse; /* Collapse borders */
+    table-layout: fixed; /* Fixed layout for consistent cell widths */
+}
+
+.zman-table {
+    margin: 20px auto; /* Center the table */
+}
+
+.zman-table td {
+    width: 150px; /* Fixed width for each cell */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Show ellipsis for overflow text */
+    white-space: nowrap; /* Prevent text from wrapping */
+    text-align: right; /* Align text to the right */
+    direction: rtl; /* Set text direction to right-to-left */
+}
+select {
+    font-size: 1em;
+    margin-top: 15px;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+}
+
+body {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: grid;
+}
+
+input#date-input {
     position: absolute;
 }
-button{
-    border: none;
+
+@media (max-width: 600px) {
+    .zmanim-div {
+        width: 100%;
+    }
+    button.prev, button.next {
+        width: 40px;
+        height: 35px;
+    }
 }
